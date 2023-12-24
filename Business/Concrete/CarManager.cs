@@ -36,7 +36,7 @@ namespace Business.Concrete
 
         public List<CarDetailDto> GetCarDetailDtos()
         {
-            
+            return _carDal.GetCarDetailDtos();
         }
     }
 }

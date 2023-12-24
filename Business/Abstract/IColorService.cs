@@ -10,6 +10,6 @@ namespace Business.Abstract
     public interface IColorService
     {
         List<Color> GetAll();
-        Color GetById(int id);
+        Color GetById(int colorId);
     }
 }

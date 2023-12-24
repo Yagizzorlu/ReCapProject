@@ -17,11 +17,11 @@ namespace DataAccess.Concrete.InMemory
         {
 
             _cars = new List<Car> {
-                new Car{Id = 1 , BrandId = 1 , ColorId = 1 , DailyPrice = 7000 , Description = "Sıfır Model Otomatik Vites" , ModelYear = 2016 },
-                new Car{Id = 2 , BrandId = 2 , ColorId = 2 , DailyPrice = 4500 , Description = "İkinci El Otomatik Vites" ,   ModelYear = 2017 },
-                new Car{Id = 3 , BrandId = 4 , ColorId = 1 , DailyPrice = 3500 , Description = "İkinci El Manuel Vites" ,     ModelYear = 2013 },
-                new Car{Id = 4 , BrandId = 3 , ColorId = 3 , DailyPrice = 6250 , Description = "Sıfır Model Manuel Vites" ,   ModelYear = 2018 },
-                new Car{Id = 5 , BrandId = 2 , ColorId = 2 , DailyPrice = 5750 , Description = "Sıfır Model Otomatik Vites" , ModelYear = 2015 }
+                new Car{CarId = 1 , BrandId = 1 , ColorId = 1 , DailyPrice = 7000 , Description = "Sıfır Model Otomatik Vites" , ModelYear = 2016 },
+                new Car{CarId = 2 , BrandId = 2 , ColorId = 2 , DailyPrice = 4500 , Description = "İkinci El Otomatik Vites" ,   ModelYear = 2017 },
+                new Car{CarId = 3 , BrandId = 4 , ColorId = 1 , DailyPrice = 3500 , Description = "İkinci El Manuel Vites" ,     ModelYear = 2013 },
+                new Car{CarId = 4 , BrandId = 3 , ColorId = 3 , DailyPrice = 6250 , Description = "Sıfır Model Manuel Vites" ,   ModelYear = 2018 },
+                new Car{CarId = 5 , BrandId = 2 , ColorId = 2 , DailyPrice = 5750 , Description = "Sıfır Model Otomatik Vites" , ModelYear = 2015 }
             };
             
         }
@@ -32,7 +32,7 @@ namespace DataAccess.Concrete.InMemory
 
         public void Delete(Car car)
         {
-            Car carToDelete = _cars.SingleOrDefault(c=> c.Id == car.Id);
+            Car carToDelete = _cars.SingleOrDefault(c=> c.CarId == car.CarId);
             _cars.Remove(carToDelete);
             
         }
@@ -54,7 +54,7 @@ namespace DataAccess.Concrete.InMemory
 
         public List<Car> GetById(int Id)
         {
-            return _cars.Where(c=> c.Id==Id).ToList();  
+            return _cars.Where(c=> c.CarId==Id).ToList();  
         }
 
         public List<CarDetailDto> GetCarDetailDtos()
@@ -64,8 +64,8 @@ namespace DataAccess.Concrete.InMemory
 
         public void Update(Car car)
         {
-            Car carToUpdate = _cars.SingleOrDefault(c=> c.Id == car.Id);
-            carToUpdate.Id = car.Id;
+            Car carToUpdate = _cars.SingleOrDefault(c=> c.CarId == car.CarId);
+            carToUpdate.CarId = car.CarId;
             carToUpdate.BrandId = car.BrandId;
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.DailyPrice = car.DailyPrice;
