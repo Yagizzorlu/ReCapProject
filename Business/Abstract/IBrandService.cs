@@ -10,5 +10,6 @@ namespace Business.Abstract
     public interface IBrandService
     {
         List<Brand> GetAll();
+        Brand GetById(int id);
     }
 }

@@ -1,5 +1,4 @@
-﻿using Entities.Abstract;
-using Entities.Concrete;
+﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -9,7 +8,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Abstract
+namespace Core.DataAccess
 {
     public interface IEntityRepository<T> where T: class,IEntity,new()
     {
