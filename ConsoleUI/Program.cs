@@ -28,11 +28,11 @@ namespace ConsoleUI
             ColorManager colorManager = new ColorManager(new EfColorDal());
             BrandManager brandManager = new BrandManager(new EfBrandDal());
 
-            var result = carManager.GetAllCarDetailDtos();
+            var result = carManager.GetAllCarDetails();
 
             if (result.Success == true)
             {
-                foreach (var car in carManager.GetAllCarDetailDtos().Data)
+                foreach (var car in carManager.GetAllCarDetails().Data)
                 {
                     Console.WriteLine(car.CarName + " " + car.BrandName);
                 }
