@@ -1,15 +1,14 @@
-﻿using Core.Utilites.Results;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Utilites
+namespace Core.Utilites.Results
 {
     public class DataResult<T> : Result, IDataResult<T>
     {
-        public DataResult(T data,bool success,string message) : base(success,message)
+        public DataResult(T data, bool success, string message) : base(success, message)
         {
             Data = data;
         }

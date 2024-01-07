@@ -1,14 +1,20 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilites.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ValidationException = FluentValidation.ValidationException;
 
 namespace Business.Concrete
 {
@@ -21,12 +27,13 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public IResult Add(Car car)
+
+        [ValidationAspect(typeof(CarValidator))]
+        public IResult Add(Car car)                                      //Entity kısmına iş kodları eklemek SOLID e aykırı
         {
-            if(car.CarName.Length < 2)
-            {
-                return new ErrorResult(Messages.CarNameInvalid);
-            }
+
+            _carDal.Add(car);
+
             return new SuccessResult(Messages.CarAdded);
         }
 
@@ -37,11 +44,7 @@ namespace Business.Concrete
         }
 
         public IDataResult<List<Car>> GetAll()
-        {
-            if(DateTime.Now.Hour == 22)
-            {
-                return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
-            }
+        { 
             return new SuccessDataResult<List<Car>>(_carDal.GetAll());
         }
 
@@ -60,6 +63,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllCarDetails());
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
         {
             _carDal.Update(car);
