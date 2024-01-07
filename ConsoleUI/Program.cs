@@ -24,23 +24,23 @@ namespace ConsoleUI
             //    Console.WriteLine(car.Description);
             //}
 
-            CarManager carManager = new CarManager(new EfCarDal());
+            //CarManager carManager = new CarManager(new EfCarDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
             BrandManager brandManager = new BrandManager(new EfBrandDal());
 
-            var result = carManager.GetAllCarDetails();
+            //var result = carManager.GetAllCarDetails();
 
-            if (result.Success == true)
-            {
-                foreach (var car in carManager.GetAllCarDetails().Data)
-                {
-                    Console.WriteLine(car.CarName + " " + car.BrandName);
-                }
-            }
-            else
-            {
-                Console.WriteLine(result.Message);
-            }
+            //if (result.Success == true)
+            //{
+            //    foreach (var car in carManager.GetAllCarDetails().Data)
+            //    {
+            //        Console.WriteLine(car.CarName + " " + car.BrandName);
+            //    }
+            //}
+            //else
+            //{
+            //    Console.WriteLine(result.Message);
+            //}
             
         }
 

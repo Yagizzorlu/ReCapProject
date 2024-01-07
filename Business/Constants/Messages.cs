@@ -26,6 +26,10 @@ namespace Business.Constants
         public static string ColorUpdated = "Renk güncellendi";
         public static string ColorDeleted = "Renk silindi";
 
+        public static string CarImageAdded  = "Araba fotoğrafı eklendi";
+        public static string CarImageUpdated = "Araba fotoğrafı güncellendi";
+        public static string CarImageDeleted = "Araba fotoğrafı silindi.";
+
         public static string CustomerAdded =  "Müşteri eklendi.";
         public static string CustomerUpdated = "Müşteri güncellendi.";
         public static string CustomerDeleted = "Müşteri silindi.";
@@ -40,6 +44,8 @@ namespace Business.Constants
         public static string RentalIsInvalid = "Kiralama geçersiz.";
 
         public static string UserAdded = "Kullanıcı eklendi";
-
+        public static string BrandLimitExceeded = "Marka limiti aşıldı.";
+        public static string BrandNameExists = "Bu marka adı bulunmaktadır.";
+        internal static string CarImageNotExist = "Araba fotoğrafı mevcut değil.";
     }
 }
