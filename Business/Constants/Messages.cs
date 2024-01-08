@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,6 +47,11 @@ namespace Business.Constants
         public static string UserAdded = "Kullanıcı eklendi";
         public static string BrandLimitExceeded = "Marka limiti aşıldı.";
         public static string BrandNameExists = "Bu marka adı bulunmaktadır.";
-        internal static string CarImageNotExist = "Araba fotoğrafı mevcut değil.";
+        public static string CarImageNotExist = "Araba fotoğrafı mevcut değil.";
+        public static string UserNotFound = "Kullanıcı bulunamadı.";
+        public static string AccessTokenCreated = "Token oluşturuldu.";
+        public static string UserAlreadyExists = "Kullanıcı mevcut";
+        public static string LoginSucceeded = "Giriş başarılı.";
+        public static string PasswordInvalid = "Şifre hatası";
     }
 }
