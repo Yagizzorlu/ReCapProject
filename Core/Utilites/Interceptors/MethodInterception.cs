@@ -1,15 +1,11 @@
 ﻿using Castle.DynamicProxy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Core.Utilites.Interceptors
+namespace Core.Utilities.Interceptors
 {
     public abstract class MethodInterception : MethodInterceptionBaseAttribute
     {
-        protected virtual void OnBefore(IInvocation invocation) { }
+        //invocation : business method
+        protected virtual void OnBefore(IInvocation invocation) { }    //virtual method.Benim ezmemi bekleyen methodlar.
         protected virtual void OnAfter(IInvocation invocation) { }
         protected virtual void OnException(IInvocation invocation, System.Exception e) { }
         protected virtual void OnSuccess(IInvocation invocation) { }

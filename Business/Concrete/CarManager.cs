@@ -1,10 +1,11 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
-using Core.Utilites.Business;
 using Core.Utilites.Results;
+using Core.Utilities.Business;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -15,7 +16,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ValidationException = FluentValidation.ValidationException;
 
 namespace Business.Concrete
 {
@@ -30,7 +30,7 @@ namespace Business.Concrete
             _brandService = brandService;
         }
 
-
+        [SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)                                      //Entity kısmına iş kodları eklemek SOLID e aykırı
         {

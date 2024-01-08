@@ -1,5 +1,4 @@
 ﻿using Core.Entities.Concrete;
-using Entities.Concrete;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -9,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace Business.ValidationRules.FluentValidation
 {
-    public class UserValidator : AbstractValidator<User>
+    public class UserOperationClaimValidator : AbstractValidator<UserOperationClaim>
     {
-        public UserValidator()
+        public UserOperationClaimValidator()
         {
-
+            RuleFor(u => u.UserId).NotEmpty();
+            RuleFor(u => u.OperationClaimId).NotEmpty();
         }
     }
 }

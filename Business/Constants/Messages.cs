@@ -53,5 +53,9 @@ namespace Business.Constants
         public static string UserAlreadyExists = "Kullanıcı mevcut";
         public static string LoginSucceeded = "Giriş başarılı.";
         public static string PasswordInvalid = "Şifre hatası";
+        public static string AuthorizationDenied = "Yetki geçersiz.";
+        public static string UserOperationClaimAdded = "Kullanıcı operasyon yapısı eklendi.";
+        public static string UserOperationClaimDeleted = "Kullanıcı operasyon yapısı silindi.";
+        public static string UserOperationClaimUpdated = "Kullanıcı operasyon yapısı güncellendi.";
     }
 }

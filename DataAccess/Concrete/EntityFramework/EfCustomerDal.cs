@@ -18,13 +18,13 @@ namespace DataAccess.Concrete.EntityFramework
                 using (CarRentalContext context = new CarRentalContext())
                 {
                     var result = (from customer in context.Customers
-                                  join user in context.Users on customer.UserId equals user.UserId
+                                  join user in context.Users on customer.UserId equals user.Id
                                   select new CustomerDetailDto
                                   {
                                       CustomerId = customer.CustomerId,
-                                      UserId = user.UserId,
-                                      FirstName = user.UserFirstName,
-                                      LastName = user.UserLastName,
+                                      UserId = user.Id,
+                                      FirstName = user.FirstName,
+                                      LastName = user.LastName,
                                       CompanyName = customer.CompanyName
                                   });
 
@@ -37,13 +37,13 @@ namespace DataAccess.Concrete.EntityFramework
                 using (CarRentalContext context = new CarRentalContext())
                 {
                     var result = (from customer in context.Customers
-                                  join user in context.Users on customer.UserId equals user.UserId
+                                  join user in context.Users on customer.UserId equals user.Id
                                   select new CustomerDetailDto
                                   {
                                       CustomerId = customer.CustomerId,
-                                      UserId = user.UserId,
-                                      FirstName = user.UserFirstName,
-                                      LastName = user.UserLastName,
+                                      UserId = user.Id,
+                                      FirstName = user.FirstName,
+                                      LastName = user.LastName,
                                       CompanyName = customer.CompanyName
                                   });
 
