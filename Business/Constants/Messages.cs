@@ -57,5 +57,8 @@ namespace Business.Constants
         public static string UserOperationClaimAdded = "Kullanıcı operasyon yapısı eklendi.";
         public static string UserOperationClaimDeleted = "Kullanıcı operasyon yapısı silindi.";
         public static string UserOperationClaimUpdated = "Kullanıcı operasyon yapısı güncellendi.";
+        public static string OperationClaimAdded = "Operasyon yapısı eklendi.";
+        public static string OperationClaimDeleted = "Operasyon yapısı silindi.";
+        public static string OperationClaimUpdated = "Operasyon yapısı güncellendi.";
     }
 }

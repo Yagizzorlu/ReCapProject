@@ -42,7 +42,7 @@ namespace WebAPI.Controllers
 
         [HttpPost("add")]
 
-        public IActionResult Post(Brand brand)
+        public IActionResult Add(Brand brand)
         {
             var result = _brandService.Add(brand);
             if(result.Success)

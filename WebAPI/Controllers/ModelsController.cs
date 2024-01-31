@@ -43,7 +43,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Post(Model model)
+        public IActionResult Add(Model model)
         {
             var result = _modelService.Add(model);
             if (result.Success)

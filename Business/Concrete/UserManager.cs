@@ -34,6 +34,8 @@ namespace Business.Concrete
         //    return new SuccessResult(Messages.UserDeleted);
         //}
 
+
+        //[SecuredOperation("admin")]
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll());

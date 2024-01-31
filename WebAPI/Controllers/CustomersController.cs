@@ -41,7 +41,7 @@ using Microsoft.AspNetCore.Mvc;
             }
 
             [HttpPost("add")]
-            public IActionResult Post(Customer customer)
+            public IActionResult Add(Customer customer)
             {
                 var result = _customerService.Add(customer);
                 if (result.Success)

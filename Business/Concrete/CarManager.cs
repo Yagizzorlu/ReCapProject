@@ -2,6 +2,8 @@
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilites.Results;
@@ -30,11 +32,12 @@ namespace Business.Concrete
             _brandService = brandService;
         }
 
-        [SecuredOperation("product.add,admin")]
+        [CacheRemoveAspect("ICarService.GetAll")]
+        //[SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)                                      //Entity kısmına iş kodları eklemek SOLID e aykırı
         {
-            IResult result = BusinessRules.Run(CheckIfBrandLimitExceded());
+            IResult result = BusinessRules.Run(CheckIfBrandLimitExceeded());
 
             if(result != null)
             {
@@ -46,12 +49,14 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarAdded);
         }
 
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);    
             return new SuccessResult(Messages.CarDeleted);
         }
 
+        [CacheAspect]
         public IDataResult<List<Car>> GetAll()
         { 
             return new SuccessDataResult<List<Car>>(_carDal.GetAll());
@@ -72,6 +77,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllCarDetails());
         }
 
+        [CacheRemoveAspect("ICarService.Get")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
         {
@@ -79,22 +85,26 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarUpdated);
         }
 
+
+        [CacheAspect]
         public IDataResult<Car> GetById(int carId)
         {
             return new SuccessDataResult<Car>(_carDal.Get(c=>c.CarId == carId));    
         }
 
+        [CacheAspect]
         public IDataResult<List<CarDetailDto>> GetAllCarDetailsByBrandId(int brandId)
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllCarDetails(c => c.BrandId == brandId));
         }
 
+        [CacheAspect]
         public IDataResult<List<CarDetailDto>> GetAllCarDetailsByModelId(int modelId)
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllCarDetails(c => c.ModelId == modelId));
         }
 
-        private IResult CheckIfBrandLimitExceded()
+        private IResult CheckIfBrandLimitExceeded()
         {
             var result = _brandService.GetAll();
         if (result.Data.Count > 50)
@@ -102,6 +112,13 @@ namespace Business.Concrete
                 return new ErrorResult(Messages.BrandLimitExceeded);
             }
             return new SuccessResult();
+        }
+
+        [TransactionScopeAspect]
+        public IResult AddTransactionalTest(Car car)
+        {
+            _carDal.Add(car);
+            return new SuccessResult(Messages.CarAdded);
         }
     }
 
